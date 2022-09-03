@@ -25,6 +25,10 @@
       NSNavPanelExpandedStateForSaveMode2 = true;
     };
 
+    LaunchServices = {
+      LSQuarantine = false;
+    };
+
     alf = {
       globalstate = 1;
     };
@@ -57,6 +61,7 @@
       "homebrew/cask"
     ];
     brews = [
+      "fheroes2"
     ];
     casks = [
       "alfred"
@@ -68,12 +73,17 @@
       "element"
       "jetbrains-toolbox"
       "visual-studio-code"
-      "firefox"
+      #"firefox"
       "protonvpn"
       "vmware-fusion"
       "font-fira-code"
       "font-fira-mono"
       "font-fira-sans"
+      "steam"
+      "dosbox"
+      "the-unarchiver"
+      "transmission"
+      "appcleaner"
     ];
   };
 
@@ -161,6 +171,13 @@
     coreutils
     age
     file
+
+    sbt
+    scala
+    scalafmt
+    ammonite
+    nodejs
+    graalvm17-ce
   ];
 
   home-manager.useGlobalPkgs = true;
@@ -182,7 +199,34 @@
 
     home.activation.compile = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       rm -f $HOME/.zshrc.zwc
+      ${"find /Applications -maxdepth 1 -type d \! -uid 0  -exec xattr -r -d com.apple.quarantine {}"} \;
     '';
+
+    # home.activation.secrets = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+    #   SRC=$HOME/Sync/mega/secrets
+    #   SECRETS=(
+    #     aws
+    #     ssh
+    #     npmrc
+    #   )
+    #   for secret in "''${SECRETS[@]}"; do
+    #     ln -sf $SRC/$secret $HOME/.$secret
+    #   done
+    #   ln -sf $SRC/sbt $HOME/.sbt/secrets
+    #   SRC=$HOME/Sync/mega/secrets/gnupg
+    #   TGT=$HOME/.config/gnupg
+    #   SECRETS=(
+    #     secring.gpg
+    #     pubring.gpg
+    #     trustdb.gpg
+    #     gpg-agent.conf
+    #   )
+    #   for secret in "''${SECRETS[@]}"; do
+    #     ln -sf $SRC/$secret $TGT/$secret
+    #   done
+    #   chmod 700 $TGT
+    # '';
+
 
     # programs.firefox = {
     #   enable = true;
