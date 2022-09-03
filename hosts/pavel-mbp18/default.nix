@@ -80,7 +80,7 @@
       "element"
       "jetbrains-toolbox"
       "visual-studio-code"
-      #"firefox"
+      "firefox"
       "protonvpn"
       "vmware-fusion"
       "font-fira-code"
@@ -91,6 +91,7 @@
       "the-unarchiver"
       "transmission"
       "appcleaner"
+      "megasync"
     ];
   };
 
