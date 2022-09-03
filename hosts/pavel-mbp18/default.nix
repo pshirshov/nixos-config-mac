@@ -48,7 +48,7 @@
       minimize-to-application = true;
       expose-animation-duration = 0.0;
       orientation = "bottom";
-      mru-spaces = false;
+      show-recents = false;
     };
     finder = {
       AppleShowAllExtensions = true;
