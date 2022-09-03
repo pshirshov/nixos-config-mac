@@ -241,7 +241,8 @@
     # };
 
     programs.firefox = {
-      #enable = true;
+      enable = true;
+      package = pkgs.ffox;
       profiles = {
         main = {
           name = "main";
