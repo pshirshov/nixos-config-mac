@@ -95,6 +95,7 @@
       "appcleaner"
       "megasync"
       "ghidra"
+      "tor-browser"
     ];
   };
 
