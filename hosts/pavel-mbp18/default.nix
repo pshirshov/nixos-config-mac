@@ -71,6 +71,9 @@
     brews = [
       "fheroes2"
       "radare2"
+      "qt@5"
+      "nasm"
+      "binutils"
     ];
     casks = [
       "alfred"
