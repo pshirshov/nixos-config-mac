@@ -70,6 +70,7 @@
     ];
     brews = [
       "fheroes2"
+      "radare2"
     ];
     casks = [
       "alfred"
@@ -93,6 +94,7 @@
       "transmission"
       "appcleaner"
       "megasync"
+      "ghidra"
     ];
   };
 
