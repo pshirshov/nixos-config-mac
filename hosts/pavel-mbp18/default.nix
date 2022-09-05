@@ -102,6 +102,7 @@
       "tor-browser"
       "microsoft-remote-desktop"
       "tailscale"
+      "cutter"
     ];
   };
 
