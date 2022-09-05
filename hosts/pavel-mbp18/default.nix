@@ -99,6 +99,8 @@
       "megasync"
       "ghidra"
       "tor-browser"
+      "microsoft-remote-desktop"
+      "tailscale"
     ];
   };
 
