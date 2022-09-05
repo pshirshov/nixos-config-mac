@@ -74,6 +74,7 @@
       "qt@5"
       "nasm"
       "binutils"
+      "bochs"
     ];
     casks = [
       "alfred"
