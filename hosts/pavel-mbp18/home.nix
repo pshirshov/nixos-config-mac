@@ -12,11 +12,10 @@
       npmrc
     )
     for secret in "''${SECRETS[@]}"; do
-      [[ -d $HOME/.$secret ]] && mv $HOME/.$secret $HOME/.$secret.bak
       ln -sf $SRC/$secret $HOME/.$secret
     done
 
-    mkdir -p $HOME/.sbt/secrets
+    mkdir -p $HOME/.sbt
     ln -sf $SRC/sbt $HOME/.sbt/secrets
 
     SRC=$HOME/Sync/mega/secrets/gnupg
