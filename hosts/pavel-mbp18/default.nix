@@ -9,6 +9,16 @@
     ];
   };
 
+
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = false;
+    };
+    # ssh = {
+    #   startAgent = true;
+    # };
+  };
   services.nix-daemon.enable = true;
   # Installs a version of nix, that dosen't need "experimental-features = nix-command flakes" in /etc/nix/nix.conf
   #services.nix-daemon.package = pkgs.nixFlakes;
@@ -77,6 +87,7 @@
       "bochs"
     ];
     casks = [
+      "adobe-acrobat-reader"
       "alfred"
       "iina"
       "slack"

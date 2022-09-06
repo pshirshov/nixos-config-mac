@@ -4,30 +4,35 @@
     ${"find /Applications -maxdepth 1 -type d \! -uid 0  -exec xattr -r -d com.apple.quarantine {}"} \;
   '';
 
-  # home.activation.secrets = config.lib.dag.entryAfter [ "writeBoundary" ] ''
-  #   SRC=$HOME/Sync/mega/secrets
-  #   SECRETS=(
-  #     aws
-  #     ssh
-  #     npmrc
-  #   )
-  #   for secret in "''${SECRETS[@]}"; do
-  #     ln -sf $SRC/$secret $HOME/.$secret
-  #   done
-  #   ln -sf $SRC/sbt $HOME/.sbt/secrets
-  #   SRC=$HOME/Sync/mega/secrets/gnupg
-  #   TGT=$HOME/.config/gnupg
-  #   SECRETS=(
-  #     secring.gpg
-  #     pubring.gpg
-  #     trustdb.gpg
-  #     gpg-agent.conf
-  #   )
-  #   for secret in "''${SECRETS[@]}"; do
-  #     ln -sf $SRC/$secret $TGT/$secret
-  #   done
-  #   chmod 700 $TGT
-  # '';
+  home.activation.secrets = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+    SRC=$HOME/Sync/mega/secrets
+    SECRETS=(
+      aws
+      ssh
+      npmrc
+    )
+    for secret in "''${SECRETS[@]}"; do
+      [[ -d $HOME/.$secret ]] && mv $HOME/.$secret $HOME/.$secret.bak
+      ln -sf $SRC/$secret $HOME/.$secret
+    done
+
+    mkdir -p $HOME/.sbt/secrets
+    ln -sf $SRC/sbt $HOME/.sbt/secrets
+
+    SRC=$HOME/Sync/mega/secrets/gnupg
+    TGT=$HOME/.config/gnupg
+    mkdir -p $TGT
+    SECRETS=(
+      secring.gpg
+      pubring.gpg
+      trustdb.gpg
+      gpg-agent.conf
+    )
+    for secret in "''${SECRETS[@]}"; do
+      ln -sf $SRC/$secret $TGT/$secret
+    done
+    chmod 700 $TGT
+  '';
 
 
   # programs.firefox = {
