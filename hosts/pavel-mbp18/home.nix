@@ -40,7 +40,7 @@
 
   programs.firefox = {
     enable = true;
-    package = pkgs.ffox;
+    package = pkgs.hello;
     profiles = {
       main = {
         name = "main";
