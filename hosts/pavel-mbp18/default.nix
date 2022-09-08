@@ -85,6 +85,8 @@
       "nasm"
       "binutils"
       "bochs"
+      "capstone"
+      "fmt"
     ];
     casks = [
       "adobe-acrobat-reader"
@@ -114,6 +116,8 @@
       "microsoft-remote-desktop"
       "tailscale"
       "cutter"
+      "dosbox-x"
+      "zerotier-one"
     ];
   };
 
