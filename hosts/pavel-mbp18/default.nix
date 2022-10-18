@@ -118,6 +118,8 @@
       "cutter"
       "dosbox-x"
       "zerotier-one"
+      "skype"
+      "microsoft-office"
     ];
   };
 
@@ -130,7 +132,6 @@
 
 
   environment.systemPackages = with pkgs; [
-    ffox
     kitty.terminfo
     nano
     wget
